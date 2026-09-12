@@ -230,20 +230,20 @@ html {
 .info-item { padding: 1.25rem; background: #fffaf5; border-left: 3px solid var(--gold); }
 .info-item strong { display: block; margin-bottom: .35rem; }
 .consultation-layout { max-width: 62rem; }
-.consultation-card { max-width: 42rem; padding: clamp(1.25rem, 4vw, 2.5rem); background: #fffaf5; border: 1px solid #e6d9cc; box-shadow: 0 18px 40px rgba(72, 45, 28, .1); }
+.consultation-card { box-sizing: border-box; width: 100%; max-width: 42rem; padding: clamp(1.25rem, 4vw, 2.5rem); background: #fffaf5; border: 1px solid #e6d9cc; box-shadow: 0 18px 40px rgba(72, 45, 28, .1); }
 .price-tag { margin-bottom: 1.75rem; color: var(--primary); font-family: var(--font-playfair), Georgia, serif; font-size: 2.4rem; font-weight: 700; }
 .price-tag span { color: var(--gray-text); font-family: var(--font-montserrat), system-ui, sans-serif; font-size: .8rem; font-weight: 500; }
 .consultation-card input, .consultation-card textarea, .consultation-card select { border: 1px solid #d8c8ba; background: white; color: #241710; border-radius: 5px; }
 .consultation-card input:focus, .consultation-card textarea:focus, .consultation-card select:focus { border-color: var(--secondary); box-shadow: 0 0 0 3px rgba(23, 107, 104, .15); outline: none; }
 .consultation-modern-card { max-width: 48rem; }
 .consultation-modern-card form { display: grid; gap: 1.25rem; }
-.consultation-modern-card form > div { display: flex; flex-direction: column; gap: .45rem; }
+.consultation-modern-card form > div { display: flex; min-width: 0; flex-direction: column; gap: .45rem; }
 .consultation-modern-card label { color: var(--foreground); font-size: .78rem; font-weight: 700; }
 .consultation-modern-card input, .consultation-modern-card textarea { width: 100%; box-sizing: border-box; padding: .8rem .9rem; font: inherit; }
-.consultation-date-field { align-items: flex-start; }
+.consultation-date-field { align-items: flex-start; min-width: 0; }
 .consultation-calendar { margin-top: .15rem; }
 .visit-booking-layout { max-width: 70rem; }
-.visit-booking-card { max-width: 58rem; background: #fffaf5; border: 1px solid #e6d9cc; box-shadow: 0 18px 40px rgba(72, 45, 28, .1); }
+.visit-booking-card { box-sizing: border-box; width: 100%; max-width: 58rem; background: #fffaf5; border: 1px solid #e6d9cc; box-shadow: 0 18px 40px rgba(72, 45, 28, .1); }
 .visit-form { padding: clamp(1.25rem, 4vw, 3rem); }
 .visit-form-section { padding: 0 0 2.5rem; margin-bottom: 2.5rem; border-bottom: 1px solid #e6d9cc; }
 .visit-form-section:last-of-type { margin-bottom: 1.5rem; }
@@ -269,8 +269,8 @@ html {
 .visit-menu-option:hover, .visit-menu-option:focus-visible, .visit-menu-option.is-selected { background: #f5ddd5; color: var(--primary-dark); }
 .visit-menu-option > span { color: var(--primary); font-weight: 700; }
 .visit-date-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(12rem, .75fr); gap: 2rem; align-items: start; }
-.visit-calendar-wrap { display: flex; flex-direction: column; gap: .65rem; }
-.visit-calendar { width: fit-content; max-width: 100%; padding: .7rem; border: 1px solid #e6d9cc; border-radius: 8px; background: #fff; }
+.visit-calendar-wrap { display: flex; min-width: 0; flex-direction: column; gap: .65rem; }
+.visit-calendar { box-sizing: border-box; width: fit-content; max-width: 100%; min-width: 0; padding: .7rem; border: 1px solid #e6d9cc; border-radius: 8px; background: #fff; overflow: hidden; }
 .visit-calendar .rdp { --rdp-accent-color: var(--primary); --rdp-accent-background-color: #f5ddd5; --rdp-today-color: var(--primary); --rdp-selected-border: 2px solid var(--primary); --rdp-day_button-border-radius: 5px; --rdp-day_button-height: 2.25rem; --rdp-day_button-width: 2.25rem; margin: 0; }
 .visit-calendar .rdp-month_caption { color: var(--foreground); font-family: var(--font-playfair), Georgia, serif; font-size: 1.05rem; }
 .visit-calendar .rdp-chevron { fill: var(--primary); }
@@ -291,6 +291,12 @@ html {
 .floating-toast-close:hover { opacity: 1; }
 @keyframes floating-toast-in { from { opacity: 0; transform: translate3d(1.5rem, -1rem, 0) scale(.96); } to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); } }
 @media (max-width: 700px) { .visit-form-grid, .visit-date-grid { grid-template-columns: 1fr; } .visit-time-field { padding-top: 0; } .visit-calendar { width: 100%; } .visit-calendar .rdp { width: 100%; } }
+@media (max-width: 360px) {
+  .visit-calendar .rdp { --rdp-day-width: 1.8rem; --rdp-day_button-height: 1.8rem; --rdp-day_button-width: 1.8rem; font-size: .78rem; }
+  .visit-calendar .rdp-months, .visit-calendar .rdp-month, .visit-calendar .rdp-month_grid { width: 100%; max-width: 100%; }
+  .visit-calendar .rdp-month_grid { table-layout: fixed; }
+  .visit-calendar .rdp-day { width: auto; }
+}
 .no-underline { text-decoration: none; }
 @media (max-width: 700px) { .content-grid, .feature-grid, .editorial-grid, .info-strip, .collection-detail { grid-template-columns: 1fr; } .page-hero-content { padding-top: 3.5rem; padding-bottom: 3.5rem; } .back-link { margin-bottom: 2rem; } .section-space, .page-section { padding-top: 3rem; padding-bottom: 3rem; } }
 
