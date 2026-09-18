@@ -30,18 +30,20 @@ export function Navbar() {
   ];
 
   return (
-    <header className={`museum-navbar sticky top-0 z-50 border-b border-white/10 bg-foreground/95 text-white shadow-lg backdrop-blur-md ${isScrolled ? "is-scrolled" : ""}`}>
+    <header className={`museum-navbar sticky top-0 z-50 border-b border-white/10 bg-foreground/95 text-white shadow-[0_10px_30px_rgba(0,0,0,0.18)] backdrop-blur-md ${isScrolled ? "is-scrolled" : ""}`}>
       <div className="museum-navbar-inner mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="/" className="museum-logo group" aria-label="Ilè Asè Alaketù Oyá Igbalè, início">
-          <div className="museum-logo-mark flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary font-serif font-bold text-lg text-white shadow-md transition-colors group-hover:bg-primary-dark">
-            
-          </div>
-          <div className="museum-logo-copy flex flex-col">
-            <span className="font-serif text-sm font-bold uppercase tracking-wider text-white transition-colors group-hover:text-gold">
-              Ilè Asè Alaketù
+        <Link href="/" className="museum-logo group flex items-center gap-3" aria-label="Museu Afro-Cultural de Sergipe, início">
+          <img
+            src="/logo-museu.png"
+            alt="Logo do Museu Afro-Cultural de Sergipe"
+            className="h-20 w-16 object-contain transition-transform duration-300 ease-out group-hover:scale-105 sm:h-20 sm:w-20"
+          />
+          <div className="museum-logo-copy flex flex-col leading-none">
+            <span className="font-serif text-base font-bold uppercase tracking-[0.12em] text-white transition-colors group-hover:text-gold sm:text-lg">
+              Museu Afro-Cultural
             </span>
-            <span className="text-[10px] font-medium uppercase tracking-widest text-white/55">
-              Oya Igbale / Museu Vivo
+            <span className="mt-1 text-[10px] font-medium uppercase tracking-[0.24em] text-white/60 sm:text-[11px]">
+              de Sergipe
             </span>
           </div>
         </Link>

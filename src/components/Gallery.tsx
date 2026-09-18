@@ -1,50 +1,49 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PillButton } from "@/components/ui/PillButton";
-import image1 from "../assets/images/cantoria.jpeg";
-import image2 from "../assets/images/visão geral.jpeg";
-import image3 from "../assets/images/foto 3.jpeg";
-import image4 from "../assets/images/mulher-retrato.jpeg";
-import image5 from "../assets/images/Fundo do lugar.jpeg";
-import image6 from "../assets/images/foto 4.jpeg";
-
 
 const galleryImages = [
   {
-    src: image1,
-    alt: "Escultura ritual",
+    src: "/imagesmuseu/pintur1.jpg",
+    alt: "Pintura de orixá em moldura dourada no acervo",
     className: "col-span-1 row-span-2",
     height: "h-[420px]",
+    objectPosition: "center 42%",
   },
   {
-    src: image2,
-    alt: "Cerimônia",
+    src: "/imagesmuseu/IMG-20260817-WA0251.jpg",
+    alt: "Fios de conta sobre toalha de renda",
     className: "col-span-1",
     height: "h-[200px]",
-  },
-  { 
-    src: image3,
-    alt: "Música e dança",  
-    className: "col-span-1",
-    height: "h-[200px]",
+    objectPosition: "center center",
   },
   {
-    src: image4,
-    alt: "Acervo do museu",
+    src: "/imagesmuseu/IMG-20260817-WA0262.jpg",
+    alt: "Mão tocando fotografia antiga emoldurada",
+    className: "col-span-2 md:col-span-2",
+    height: "h-[200px]",
+    objectPosition: "center center",
+  },
+  {
+    src: "/imagesmuseu/IMG-20260817-WA0265.jpg",
+    alt: "Saias vermelhas penduradas no acervo",
     className: "col-span-1 row-span-2",
     height: "h-[420px]",
+    objectPosition: "center center",
   },
   {
-    src: image5,
-    alt: "Artesanato afro",
+    src: "/imagesmuseu/IMG-20260817-WA0270.jpg",
+    alt: "Parede rosa com quadro, vaso turquesa e arara",
     className: "col-span-1",
-    height: "h-[200px]",
+    height: "h-[420px]",
+    objectPosition: "center center",
   },
   {
-    src: image6,
-    alt: "Tradição oral",
-    className: "col-span-1",
+    src: "/imagesmuseu/IMG-20260817-WA0250.jpg",
+    alt: "Visão geral do salão expositivo",
+    className: "col-span-1 md:col-span-2",
     height: "h-[200px]",
+    objectPosition: "center 40%",
   },
 ];
 
@@ -53,9 +52,7 @@ export function Gallery() {
     <section className="relative overflow-hidden px-6 py-16 md:px-12 lg:px-16 lg:py-24">
       <div
   className="absolute inset-0 bg-cover bg-center"
-  style={{
-    backgroundImage: `url('${image5.src}')`, 
-  }}
+  style={{ backgroundColor: "var(--foreground)" }}
 />
 <div className="absolute inset-0 bg-foreground/80" />
 
@@ -99,7 +96,7 @@ export function Gallery() {
                 key={img.alt}
                 className={`relative overflow-hidden border border-white/15 ${img.className} ${img.height}`}
               >
-                <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" />
+                <Image src={img.src} alt={img.alt} fill sizes="(max-width: 768px) 50vw, 25vw" className="object-cover" style={{ objectPosition: img.objectPosition }} />
               </div>
             ))}
           </div>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -17,6 +18,14 @@ const collections = {
     description: "Tecidos, cores, amarrações e adornos formam uma linguagem própria. Neste conjunto, o vestir aparece como prática de memória e como modo de marcar presenças, histórias e responsabilidades dentro da comunidade.",
     items: ["Tecidos e técnicas de amarração", "Adornos e elementos simbólicos", "Memórias de quem veste"],
     accent: "var(--primary)",
+    gallery: [
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 12.55.09.jpeg", alt: "Peça de vestuário do acervo, vista frontal" },
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 12.55.11.jpeg", alt: "Detalhe de tecido e adorno da coleção de vestuário" },
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 12.55.12 (1).jpeg", alt: "Indumentária da coleção de vestuário" },
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 12.55.12 (2).jpeg", alt: "Detalhe de uma peça de vestuário do acervo" },
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 12.55.12.jpeg", alt: "Peças e tecidos da coleção de vestuário" },
+      { src: "/vestuario/WhatsApp Image 2026-09-18 at 13.04.01.jpeg", alt: "Fotografia histórica emoldurada com pessoa vestida de branco" },
+    ],
   },
   "arquivo-oral": {
     number: "Coleção 03",
@@ -54,6 +63,34 @@ export default async function CollectionPage({ params }: Props) {
         </div>
       </section>
 
+      {"gallery" in collection && collection.gallery.length > 0 && (
+        <section className="container collection-gallery section-space" aria-labelledby="vestuario-galeria">
+          <div className="section-intro">
+            <p className="eyebrow">Registro visual</p>
+            <h2 id="vestuario-galeria">Peças da coleção</h2>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-[220px_220px_260px]">
+            {collection.gallery.map((image, index) => (
+              <figure className={`relative min-h-[260px] overflow-hidden border-[10px] border-[#5b3024] bg-[#eadfce] p-2 shadow-[0_18px_32px_rgba(72,45,28,0.22)] ring-1 ring-[#3e211a]/35 transition-transform duration-300 hover:-translate-y-1 sm:aspect-[4/5] lg:min-h-0 lg:aspect-auto ${
+                index === 0 ? "lg:col-span-1 lg:row-span-2" : ""
+              } ${
+                index === 5 ? "lg:col-span-3 lg:row-span-1" : ""
+              }`} key={image.src}>
+                <div className="absolute inset-2 overflow-hidden border border-[#b89062] bg-[#f7f1e8]">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
+                </div>
+              </figure>
+            ))}
+          </div>
+        </section>
+      )}
+
       <section className="container collection-detail section-space">
         <div className="collection-detail-copy">
           <p className="eyebrow">Sobre a coleção</p>
@@ -66,6 +103,7 @@ export default async function CollectionPage({ params }: Props) {
           </ul>
         </div>
       </section>
+
     </main>
   );
 }

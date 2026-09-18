@@ -2,27 +2,24 @@ import Image from "next/image";
 import { MapPin, ArrowRight } from "lucide-react";
 import { PillButton } from "@/components/ui/PillButton";
 import { DottedPattern } from "@/components/ui/DottedPattern";
-import image1 from "../assets/images/visita guiada.jpeg";
-import image2 from "../assets/images/roda de conversa.jpeg";
-
 const events = [
   {
     date: "16 MAR",
     title: "Roda de Conversa",
     subtitle: "História e resistência do Candomblé",
-    image: image2,
+    image: "/imagesmuseu/IMG-20260817-WA0251.jpg",
   },
   {
     date: "22 MAR",
     title: "Oficina",
     subtitle: "Símbolos e significados na tradição iorubá",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&q=80",
+    image: "/imagesmuseu/IMG-20260817-WA0277.jpg",
   },
   {
     date: "05 ABR",
     title: "Visita Guiada",
     subtitle: "Conheça o acervo permanente do museu",
-    image: image1,
+    image: "/imagesmuseu/IMG-20260817-WA0250.jpg",
   },
 ];
 

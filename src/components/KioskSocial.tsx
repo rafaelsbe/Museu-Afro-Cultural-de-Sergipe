@@ -2,7 +2,6 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PillButton } from "@/components/ui/PillButton";
 import { DottedPattern } from "@/components/ui/DottedPattern";
-import image1 from "../assets/images/acredite.jpg";
 
 const socialLinks = [
   {
@@ -37,10 +36,10 @@ export function KioskSocial() {
       <div className="mx-auto grid max-w-6xl gap-12 md:grid-cols-2">
         <div>
           <h2 className="mb-6 font-serif text-3xl font-bold uppercase">O Kiosque</h2>
-          <div className="relative mb-6 aspect-[4/3] overflow-hidden border border-gray-border/70">
+          <div className="relative mb-6 aspect-[3/4] overflow-hidden border border-gray-border/70">
             <Image
-              src={image1}
-              alt="Publicação do museu"
+              src="/imagesmuseu/IMG-20260817-WA0272.jpg"
+              alt="Cartaz do G.R.C. Axé Kizomba em tributo à Mãe Nair"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"

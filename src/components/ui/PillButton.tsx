@@ -5,6 +5,8 @@ type PillButtonProps = {
   variant?: "primary" | "secondary" | "ghost" | "black";
   className?: string;
   href: string;
+  target?: string;
+  rel?: string;
 };
 
 export function PillButton({
@@ -12,6 +14,8 @@ export function PillButton({
   variant = "primary",
   className,
   href,
+  target,
+  rel,
 }: PillButtonProps) {
   const variants = {
     primary: "bg-primary text-white hover:bg-primary-dark",
@@ -23,6 +27,8 @@ export function PillButton({
   return (
     <a
       href={href}
+      target={target}
+      rel={rel}
       className={cn(
         "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-6 py-2.5 text-xs font-bold uppercase tracking-wider transition-colors",
         variants[variant],

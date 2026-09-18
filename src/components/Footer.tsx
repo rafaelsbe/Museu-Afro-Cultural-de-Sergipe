@@ -37,9 +37,14 @@ export function Footer() {
             <PillButton href="/visite#contato" variant="black" className="w-full md:w-auto">
               Entre em Contato
             </PillButton>
-            <PillButton href="tel:+557132221234" className="w-full md:w-auto">
+            <PillButton
+              href="https://wa.me/5579998326224"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full md:w-auto"
+            >
               <Phone size={14} />
-              (71) 3222-1234
+              (79) 99832-6224
             </PillButton>
           </div>
         </div>

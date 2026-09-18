@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { PillButton } from "@/components/ui/PillButton";
-import image12 from "../assets/images/Candomblé festival in Salvador, Brazil….jpg"
 
 export function Featured() {
   return (
@@ -41,7 +40,7 @@ export function Featured() {
           </div>
         </div>
 
-        <div className="relative min-h-[400px] lg:min-h-0">
+        <div className="relative flex min-h-[400px] items-center justify-center bg-beige px-6 py-8 lg:min-h-0 lg:px-12">
           <div className="absolute -left-px top-0 z-10 hidden h-full w-16 lg:block">
             <svg
               viewBox="0 0 64 500"
@@ -57,13 +56,15 @@ export function Featured() {
           </div>
           <div className="absolute left-0 top-0 z-20 hidden h-full w-1 bg-primary lg:block" />
 
-          <Image
-            src={image12}
-            alt="Tradição do Candomblé"
-            fill
-            sizes="(max-width: 1024px) 100vw, 50vw"
-            className="object-cover"
-          />
+          <div className="relative aspect-[4/5] w-full max-w-[34rem] overflow-hidden">
+            <Image
+              src="/imagesmuseu/IMG-20260817-WA0214.jpg"
+              alt="Guardiã da casa no barracão do Ilè Asè Alaketù Oyá Igbalè"
+              fill
+              sizes="(max-width: 1024px) 100vw, 42vw"
+              className="object-cover"
+            />
+          </div>
         </div>
       </div>
     </section>

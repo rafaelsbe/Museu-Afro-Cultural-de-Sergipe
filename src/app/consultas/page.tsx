@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
+import Image from "next/image";
 import { DayPicker } from "react-day-picker";
 import { useToast } from "@/components/ToastProvider";
 import "react-day-picker/style.css";
@@ -60,7 +61,7 @@ export default function ConsultasPage() {
   return (
     <main className="museum-page">
       <section className="container page-section consultation-layout">
-        <div className="section-intro"><p className="eyebrow">Atendimento com hora marcada</p><h1>Consulta de Búzios</h1><p>Envie seus dados para solicitar um horário. A equipe do museu retorna para confirmar disponibilidade e orientações.</p></div>
+        <div className="consultation-intro-grid"><div className="section-intro"><p className="eyebrow">Atendimento com hora marcada</p><h1>Consulta de Búzios</h1><p>Envie seus dados para solicitar um horário. A equipe do museu retorna para confirmar disponibilidade e orientações.</p></div><div className="relative aspect-[3/4] overflow-hidden"><Image src="/imagesmuseu/aneltrancarua.jpg" alt="Mão com anel de prata, detalhe do ofício da casa" fill sizes="(max-width: 700px) 100vw, 40vw" className="object-cover object-center" /></div></div>
         <div className="consultation-card consultation-modern-card">
         <p className="price-tag">R$ {CONSULTA_PRICE},00 <span>por consulta</span></p>
 

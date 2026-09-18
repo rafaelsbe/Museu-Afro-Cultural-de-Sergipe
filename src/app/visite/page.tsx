@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Visite() {
   return (
     <main className="museum-page">
@@ -23,7 +25,18 @@ export default function Visite() {
           </div>
         </div>
 
+        <div id="contato" className="mt-6 flex flex-wrap items-center gap-3 border-l-4 border-primary bg-white px-5 py-4 shadow-sm">
+          <strong className="text-sm uppercase tracking-wider">Fale com o museu</strong>
+          <a className="font-semibold text-primary hover:text-primary-dark" href="tel:+5579998326224">
+            (79) 99832-6224
+          </a>
+        </div>
+
         <a className="route-link" href="/visitas/agendar">Agendar visita</a>
+
+        <div className="relative mt-14 aspect-[16/7] overflow-hidden">
+          <Image src="/imagesmuseu/IMG-20260817-WA0270.jpg" alt="Parede rosa com quadro, vaso turquesa e arara do museu" fill sizes="(max-width: 700px) 100vw, 90vw" className="object-cover" style={{ objectPosition: "center 45%" }} />
+        </div>
 
         {/* ── Mapa interativo ── */}
         <div style={{ marginTop: '3.5rem' }}>

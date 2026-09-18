@@ -4,22 +4,25 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowDown, ArrowRight } from "lucide-react";
 import { type PointerEvent, useEffect, useRef, useState } from "react";
-import imageFestival from "../assets/images/Candomblé festival in Salvador, Brazil….jpg";
-import imageMarço from "../assets/images/21 de março_ por que é tão importante conhecer….jpg";
-import image6360 from "../assets/images/636063147379966144.jpg";
 
 const headerImages = [
   {
-    src: imageMarço,
-    alt: "21 de março",
+    src: "/imagesmuseu/IMG-20260817-WA0225.jpg",
+    alt: "Arco do barracão com cortinas azuis e pinturas de orixás",
+    overlay: "bg-gradient-to-t from-foreground/45 via-foreground/20 to-transparent",
+    objectPosition: "center 60%",
   },
   {
-    src: image6360,
-    alt: "Imagem 6360",
+    src: "/imagesmuseu/IMG-20260817-WA0265.jpg",
+    alt: "Arara com saias vermelhas do acervo do museu",
+    overlay: "bg-foreground/55",
+    objectPosition: "center center",
   },
   {
-    src: imageFestival,
-    alt: "Cerimônia de Candomblé",
+    src: "/imagesmuseu/IMG-20260817-WA0250.jpg",
+    alt: "Salão expositivo do Museu Afro-Cultural de Sergipe",
+    overlay: "bg-gradient-to-t from-foreground/50 via-foreground/20 to-transparent",
+    objectPosition: "center 40%",
   },
 ];
 
@@ -94,6 +97,7 @@ export function Header() {
           src={image.src}
           alt={image.alt}
           fill
+          style={{ objectPosition: image.objectPosition }}
           className={`absolute inset-0 object-cover transition-opacity duration-700 ease-in-out ${
             index === currentImage ? "opacity-100" : "opacity-0"
           }`}
@@ -101,7 +105,14 @@ export function Header() {
           priority={index === 0}
         />
       ))}
-      <div className="absolute inset-0 bg-foreground/65" />
+      {headerImages.map((image, index) => (
+        <div
+          key={`${image.alt}-overlay`}
+          className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${image.overlay} ${
+            index === currentImage ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
 
       <div className="relative z-10 flex min-h-[70vh] flex-col items-center justify-center px-6 pb-20 pt-16 text-center">
         <p className="mb-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.3em] text-gold">
