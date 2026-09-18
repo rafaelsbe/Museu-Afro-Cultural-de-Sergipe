@@ -7,6 +7,7 @@ import { Menu, X, Sparkles, Compass, Calendar, BookOpen, MapPin, Info, Layers, C
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMuseumMenuOpen, setIsMuseumMenuOpen] = useState(false);
+  const [isBookingMenuOpen, setIsBookingMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -81,10 +82,19 @@ export function Navbar() {
               </Link>
             );
           })}
-          <Link href="/consultas" className="museum-cta ml-5 flex items-center gap-2 rounded-full border border-gold/70 bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wider text-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:bg-yellow-300">
-            <Sparkles size={14} aria-hidden="true" />
-            Consultas &amp; Búzios
-          </Link>
+          <div className="relative ml-5">
+            <button type="button" onClick={() => setIsBookingMenuOpen(!isBookingMenuOpen)} aria-expanded={isBookingMenuOpen} className="museum-cta flex items-center gap-2 rounded-full border border-gold/70 bg-gold px-4 py-2 text-xs font-bold uppercase tracking-wider text-foreground shadow-lg transition-all hover:-translate-y-0.5 hover:bg-yellow-300">
+              <Sparkles size={14} aria-hidden="true" />
+              Agendar
+              <ChevronDown size={13} className={`transition-transform ${isBookingMenuOpen ? "rotate-180" : ""}`} aria-hidden="true" />
+            </button>
+            {isBookingMenuOpen && (
+              <div className="museum-dropdown-panel absolute right-0 top-full mt-3 flex w-44 flex-col rounded-lg border border-white/10 bg-foreground p-2 text-left shadow-2xl">
+                <Link href="/visitas/agendar" onClick={() => setIsBookingMenuOpen(false)} className="museum-dropdown-link rounded-md px-3 py-2.5 text-sm font-semibold normal-case tracking-normal text-white/85 hover:bg-white/10 hover:text-white">Visita</Link>
+                <Link href="/consultas" onClick={() => setIsBookingMenuOpen(false)} className="museum-dropdown-link rounded-md px-3 py-2.5 text-sm font-semibold normal-case tracking-normal text-white/85 hover:bg-white/10 hover:text-white">Búzios</Link>
+              </div>
+            )}
+          </div>
         </nav>
 
         <button
@@ -128,7 +138,8 @@ export function Navbar() {
                 </Link>
               );
             })}
-            <Link href="/consultas" onClick={() => setIsOpen(false)} className="museum-mobile-cta mt-3 flex items-center justify-center gap-2 rounded-full border border-gold/70 bg-gold px-4 py-3 text-sm font-bold text-foreground"><Sparkles size={17} aria-hidden="true" />Consultas &amp; Búzios</Link>
+            <button type="button" onClick={() => setIsBookingMenuOpen(!isBookingMenuOpen)} aria-expanded={isBookingMenuOpen} className="museum-mobile-cta mt-3 flex w-full items-center justify-center gap-2 rounded-full border border-gold/70 bg-gold px-4 py-3 text-sm font-bold text-foreground"><Sparkles size={17} aria-hidden="true" />Agendar<ChevronDown size={16} className={`transition-transform ${isBookingMenuOpen ? "rotate-180" : ""}`} aria-hidden="true" /></button>
+            {isBookingMenuOpen && <div className="grid grid-cols-2 gap-2 pt-2"><Link href="/visitas/agendar" onClick={() => setIsOpen(false)} className="rounded-lg border border-white/15 px-3 py-2.5 text-center text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white">Visita</Link><Link href="/consultas" onClick={() => setIsOpen(false)} className="rounded-lg border border-white/15 px-3 py-2.5 text-center text-sm font-semibold text-white/85 hover:bg-white/10 hover:text-white">Búzios</Link></div>}
           </nav>
         </div>
       )}
