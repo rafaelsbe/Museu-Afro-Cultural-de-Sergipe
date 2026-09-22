@@ -24,13 +24,15 @@ const dancing = Dancing_Script({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://museu-afro-cultural-de-sergipe.vercel.app"
+  ),
   title: {
-    default: "Museu Afro-Cultural de Sergipe",
+    default: "Museu Afro-Cultural de Sergipe | Memória, Cultura e Educação",
     template: "%s | Museu Afro-Cultural de Sergipe",
   },
   description:
-    "Museu vivo de memória, acolhimento e educação sobre a cultura afro-brasileira em Aracaju.",
+    "Conheça o Museu Afro-Cultural de Sergipe: acervo, memória, cultura afro-brasileira, educação, programação e informações para visitar o museu.",
   openGraph: {
     title: "Museu Afro-Cultural de Sergipe",
     description: "Museu vivo de memória, acolhimento e educação sobre a cultura afro-brasileira em Aracaju.",
