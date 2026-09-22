@@ -15,7 +15,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-}); 
+});
 
 const dancing = Dancing_Script({
   variable: "--font-dancing",
@@ -25,7 +25,8 @@ const dancing = Dancing_Script({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://museu-afro-cultural-de-sergipe.vercel.app"
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      "https://museu-afro-cultural-de-sergipe.vercel.app"
   ),
   title: {
     default: "Museu Afro-Cultural de Sergipe | Memória, Cultura e Educação",
@@ -35,8 +36,16 @@ export const metadata: Metadata = {
     "Conheça o Museu Afro-Cultural de Sergipe: acervo, memória, cultura afro-brasileira, educação, programação e informações para visitar o museu.",
   openGraph: {
     title: "Museu Afro-Cultural de Sergipe",
-    description: "Museu vivo de memória, acolhimento e educação sobre a cultura afro-brasileira em Aracaju.",
-    images: [{ url: "/imagesmuseu/banner.jpg", width: 1280, height: 640, alt: "Museu Ilè Asè Alaketù Oyá Igbalè com atabaques" }],
+    description:
+      "Museu vivo de memória, acolhimento e educação sobre a cultura afro-brasileira em Aracaju.",
+    images: [
+      {
+        url: "/imagesmuseu/banner.jpg",
+        width: 1280,
+        height: 640,
+        alt: "Museu Ilè Asè Alaketù Oyá Igbalè com atabaques",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
@@ -49,6 +58,38 @@ export const metadata: Metadata = {
   },
 };
 
+const museumStructuredData = {
+  "@context": "https://schema.org",
+  "@type": "Museum",
+  name: "Museu Afrocultural de Sergipe",
+  description:
+    "O Museu Afrocultural de Sergipe é o primeiro museu de candomblé sergipano, atuando como um centro religioso e cultural. Nosso espaço é dedicado a preservar a memória, a fé e a ancestralidade afro-brasileira no estado.",
+  url: "https://museu-afro-cultural-de-sergipe.vercel.app",
+  telephone: "+55 79 9832-6224",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Avenida Tiradentes, 210",
+    addressLocality: "Aracaju",
+    addressRegion: "SE",
+    postalCode: "49053-436",
+    addressCountry: "BR",
+  },
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+      ],
+      opens: "14:00",
+      closes: "18:00",
+    },
+  ],
+};
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
@@ -56,12 +97,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${playfair.variable} ${montserrat.variable} ${dancing.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(museumStructuredData),
+          }}
+        />
+
         <a href="#main-content" className="skip-link">
           Pular para o conteúdo
         </a>
+
         <ToastProvider>
           <Navbar />
-          <div id="main-content" className="flex-1">{children}</div>
+          <div id="main-content" className="flex-1">
+            {children}
+          </div>
           <Footer />
         </ToastProvider>
       </body>
