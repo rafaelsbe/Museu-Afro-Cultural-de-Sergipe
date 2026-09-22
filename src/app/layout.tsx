@@ -15,7 +15,7 @@ const montserrat = Montserrat({
   variable: "--font-montserrat",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-});
+}); 
 
 const dancing = Dancing_Script({
   variable: "--font-dancing",
